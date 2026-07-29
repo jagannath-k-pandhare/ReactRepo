@@ -7,9 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-    <div>My First Project </div>
-    </>
+    <h1>Aircraft Maintenance Portal</h1>
   )
 }
 
