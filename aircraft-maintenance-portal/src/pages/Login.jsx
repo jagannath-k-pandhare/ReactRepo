@@ -19,7 +19,7 @@ const navigate = useNavigate();
         }
 
         if (username === "admin" && password === "admin123") {
-            navigate("/dashboard");
+            navigate("/aircraftlist");
         }
         else {
             alert("Invalid username or password.")

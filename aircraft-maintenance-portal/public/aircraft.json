@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "aircraftReg": "VT-ABC",
+    "manufacturer": "Airbus",
+    "model": "A320"
+  },
+  {
+    "id": 2,
+    "aircraftReg": "VT-BCD",
+    "manufacturer": "Boeing",
+    "model": "737-800"
+  },
+  {
+    "id": 3,
+    "aircraftReg": "VT-EFG",
+    "manufacturer": "Airbus",
+    "model": "A320"
+  },
+  {
+    "id": 4,
+    "aircraftReg": "VT-HIJ",
+    "manufacturer": "Boeing",
+    "model": "737-800"
+  },
+  {
+    "id": 5,
+    "aircraftReg": "VT-KLM",
+    "manufacturer": "Airbus",
+    "model": "A420"
+  },
+  {
+    "id": 6,
+    "aircraftReg": "VT-NOP",
+    "manufacturer": "Boeing",
+    "model": "737-600"
+  }
+]
