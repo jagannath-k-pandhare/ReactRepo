@@ -1,31 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function RecentActivity() {
-  const activities = [
-    "Aircraft VT-ABC added.",
-    "Maintenance scheduled for VT-BCD.",
-    "Profile updated.",
-  ];
+  const [activity, setActivity] = useState([]);
 
-  //arrow function name loadActivities
-  loadActivities = () => {
-    try {
-      const response = fetch("/activity.json");
-      console.log(response);
-      if (!response.ok) {
-        throw new Error(`HTTP Error : ${response.status}`);
+  useEffect(() => {
+    //arrow function name loadActivities
+    async function loadActivities() {
+      try {
+        const response = await fetch("/activity.json");
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(`HTTP Error : ${response.status}`);
+        }
+        const data = await response.json();
+
+        setActivity(data);
+      } catch (error) {
+        console.log(error);
       }
-      const data = response.json();
-      
-    } catch (error) {
-      console.log(error);
     }
-  };
+    loadActivities();
+  }, []);
+
   return (
     <>
       <div>
-        {activities.map((item) => {
-          return <p key={item}>{item}</p>;
+        {activity.map((item) => {
+          return <p key={item.id}>{item.activity}</p>;
         })}
       </div>
     </>

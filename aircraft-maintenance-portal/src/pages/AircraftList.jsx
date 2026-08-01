@@ -27,16 +27,17 @@ function AircraftList() {
         Aircraft List{" "}
         {aircraft.length ? "and Count is : " + aircraft.length : ""}
       </h2>
-        {
-          aircraft.map((n) => {
-          return <AircraftItem
+      {aircraft.map((n) => {
+        return (
+          <AircraftItem
             key={n.id}
             aircraftReg={n.aircraftReg}
             manufacturer={n.manufacturer}
             aircraft={n}
             acReg={n.aircraftReg}
-            />
-        })}
+          />
+        );
+      })}
     </div>
   );
 }
