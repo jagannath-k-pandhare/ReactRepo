@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
   return (
@@ -6,35 +6,65 @@ function Sidebar() {
       <nav>
         <ul className="space-y-2">
           <li>
-            <NavLink to="/dashboard" className={({ isActive }) => isActive ? "block w-full rounded bg-blue-600 p-2 text-white"
-              : "block w-full rounded p-2 hover:bg-gray-200"}>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full rounded bg-blue-600 p-2 text-white"
+                  : "block w-full rounded p-2 hover:bg-gray-200"
+              }
+            >
               Dashboard
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/aircraft" className={({ isActive }) => isActive ? "block w-full rounded bg-blue-600 p-2 text-white"
-              : "block w-full rounded p-2 hover:bg-gray-200"}>
+            <NavLink
+              to="/aircraft"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full rounded bg-blue-600 p-2 text-white"
+                  : "block w-full rounded p-2 hover:bg-gray-200"
+              }
+            >
               Aircraft
             </NavLink>
           </li>
           <li>
-            <NavLink to="/aircraftList" className={({ isActive }) => isActive ? "block w-full rounded bg-blue-600 p-2 text-white"
-              : "block w-full rounded p-2 hover:bg-gray-200"}>
+            <NavLink
+              to="/aircraftlist"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full rounded bg-blue-600 p-2 text-white"
+                  : "block w-full rounded p-2 hover:bg-gray-200"
+              }
+            >
               Aircraft List
             </NavLink>
           </li>
 
           <li>
-             <NavLink to="/favourite" className={({ isActive }) => isActive ? "block w-full rounded bg-blue-600 p-2 text-white"
-              : "block w-full rounded p-2 hover:bg-gray-200"}>
+            <NavLink
+              to="/favourite"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full rounded bg-blue-600 p-2 text-white"
+                  : "block w-full rounded p-2 hover:bg-gray-200"
+              }
+            >
               Favourite
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/profile" className={({ isActive }) => isActive ? "block w-full rounded bg-blue-600 p-2 text-white"
-              : "block w-full rounded p-2 hover:bg-gray-200"}>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full rounded bg-blue-600 p-2 text-white"
+                  : "block w-full rounded p-2 hover:bg-gray-200"
+              }
+            >
               Profile
             </NavLink>
           </li>
