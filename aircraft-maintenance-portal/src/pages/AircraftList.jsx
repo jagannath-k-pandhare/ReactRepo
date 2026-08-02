@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import AircraftItem from "../components/AircraftItem";
 import DataTable from "../components/common/DataTable";
 
 function AircraftList() {
