@@ -9,7 +9,7 @@ function DataTable({ columns, data }) {
         className="flex justify-between items-center mb-4 font-semibold border-b pb-2"
       >
         {columns.map((column) => (
-          <div key={column.field}>{column.header}</div>
+          <div key={column.id}>{column.header}</div>
         ))}
       </div>
 
@@ -21,8 +21,8 @@ function DataTable({ columns, data }) {
           className="flex justify-between items-center mb-4"
         >
           {columns.map((column) => (
-            <div id="td" key={column.field}>
-              {item[column.field]}
+            <div id="td" key={column.id}>
+              {column.render ? column.render(item) : item[column.field]}
             </div>
           ))}
         </div>

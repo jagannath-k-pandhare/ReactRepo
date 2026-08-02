@@ -1,16 +1,36 @@
 import { useState, useEffect } from "react";
 import DataTable from "../components/common/DataTable";
+import { useNavigate } from "react-router-dom";
 
 function AircraftList() {
   const [searchAircraft, setSearchAircraft] = useState("");
   const [aircraft, setAircraft] = useState([]);
   const [searchManuf, setSearchManuf] = useState("");
+  const navigate = useNavigate();
 
+  function handleView(item) {
+    navigate(`/aircraftdetails/${item.id}`);
+  }
   const columns = [
     { id: 1, header: "Registration", field: "aircraftReg" },
-    { id: 3, header: "Manufacturer", field: "manufacturer" },
     { id: 2, header: "Model", field: "model" },
-    { id: 4, header: "Action", field: "Action" },
+    { id: 3, header: "Manufacturer", field: "manufacturer" },
+    {
+      id: 4,
+      header: "Action",
+      render: (item) => (
+        <>
+          <button
+            className="text-blue-600 hover:underline p-2"
+            onClick={() => handleView(item)}
+          >
+            View
+          </button>
+          <button className="text-green-600 hover:underline p-2">Edit</button>
+          <button className="text-red-600 hover:underline p-2">Delete</button>
+        </>
+      ),
+    },
   ];
 
   const handleSearch = (e) => {
