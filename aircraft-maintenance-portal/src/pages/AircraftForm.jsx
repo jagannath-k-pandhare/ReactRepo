@@ -7,7 +7,7 @@ function AircraftForm() {
   const [aircraftReg, setAircraftReg] = useState("");
   const [model, setModel] = useState("");
   const [manufacturer, setManufacturer] = useState("");
-  const [errors, setError] = useState({});
+  const [errors, setErrors] = useState({});
 
   function validateForm() {
     const validationErrors = {};
@@ -21,18 +21,33 @@ function AircraftForm() {
     if (manufacturer.trim() === "") {
       validationErrors.manufacturer = "Manufacturer is required";
     }
-    setError(validationErrors);
+    setErrors(validationErrors);
 
     return Object.keys(validationErrors).length === 0;
   }
   function handleAircraftRegChange(e) {
     setAircraftReg(e.target.value);
+    if (errors.aircraftReg) {
+      const newErrors = { ...errors };
+      delete newErrors.aircraftReg;
+      setErrors(newErrors);
+    }
   }
   function handleModel(e) {
     setModel(e.target.value);
+    if (errors.model) {
+      const newErrors = { ...errors };
+      delete newErrors.model;
+      setErrors(newErrors);
+    }
   }
   function handleManufacturer(e) {
     setManufacturer(e.target.value);
+    if (errors.manufacturer) {
+      const newErrors = { ...errors };
+      delete newErrors.manufacturer;
+      setErrors(newErrors);
+    }
   }
   useEffect(() => {
     if (!isEditMode) return;
@@ -55,7 +70,7 @@ function AircraftForm() {
       }
     }
     loadAircraft();
-  }, [id]);
+  }, [id, isEditMode]);
 
   function handleSave(e) {
     if (!validateForm()) return;
@@ -74,7 +89,7 @@ function AircraftForm() {
       <div className="space-y-4">
         <p>
           <input
-            className="p-2 bg-white mt-2 text-black"
+            className={`p-2 bg-white mt-2 border-2 rounded text-black ${errors.aircraftReg ? " border-red-500" : " border-gray-300"}`}
             type="text"
             value={aircraftReg}
             onChange={handleAircraftRegChange}
@@ -86,7 +101,7 @@ function AircraftForm() {
         )}
         <p>
           <input
-            className="p-2 bg-white mt-2 text-black"
+            className={`p-2 bg-white mt-2 border-2 rounded text-black ${errors.model ? " border-red-500" : " border-gray-300"}`}
             type="text"
             value={model}
             onChange={handleModel}
@@ -97,7 +112,7 @@ function AircraftForm() {
         {errors.model && <p className="text-red-500 text-sm">{errors.model}</p>}
         <p>
           <input
-            className="p-2 bg-white mt-2 text-black"
+            className={`p-2 bg-white mt-2 border-2 text-black rounded ${errors.manufacturer ? " border-red-500" : " border-gray-300"}`}
             type="text"
             value={manufacturer}
             onChange={handleManufacturer}
@@ -110,14 +125,14 @@ function AircraftForm() {
         )}
         <p>
           <button
-            className="p-2 bg-blue-600 text-white m-2"
+            className="p-2 bg-blue-600 text-white m-2 rounded"
             onClick={handleSave}
           >
             {isEditMode ? "Update" : "Save"}
           </button>
 
           <button
-            className="p-2 bg-gray-500 m-2 text-black"
+            className="p-2 bg-gray-500 m-2 text-black rounded"
             onClick={handleCancel}
           >
             Cancel
