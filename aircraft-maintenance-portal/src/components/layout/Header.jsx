@@ -8,6 +8,7 @@ function Header() {
   const pageTitles = {
     "/dashboard": "Dashboard",
     "/aircraft": "Aircraft",
+    "/aircraft/add": "Add Aircraft",
     "/aircraftlist": "Aircraft List",
     "/favourite": "Favourite",
     "/profile": "Profile",

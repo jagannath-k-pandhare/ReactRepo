@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 import AppLayout from "./components/layout/AppLayout";
+import AircraftForm from "./pages/AircraftForm";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/aircraft" element={<AircraftDetails />} />
         <Route path="/aircraftlist" element={<AircraftList />} />
+        <Route path="/aircraft/add" element={<AircraftForm />} />
+        <Route path="/aircraft/edit/:id" element={<AircraftForm />} />
         <Route path="/aircraftdetails/:id" element={<AircraftDetails />} />
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/profile" element={<Profile />} />

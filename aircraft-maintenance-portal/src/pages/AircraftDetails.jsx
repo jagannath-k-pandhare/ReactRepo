@@ -34,7 +34,7 @@ function AircraftDetails() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto bg-white text-blue-600 rounded-lg shadow p-6">
+    <div className="max-w-3xl mx-auto text-blue-600 rounded-lg shadow p-6">
       <h1 className="text-2xl font-bold mb-6">Aircraft Details</h1>
 
       <div className="space-y-4">

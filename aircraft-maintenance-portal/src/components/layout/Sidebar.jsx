@@ -18,7 +18,7 @@ function Sidebar() {
             </NavLink>
           </li>
 
-          <li>
+          {/* <li>
             <NavLink
               to="/aircraft"
               className={({ isActive }) =>
@@ -29,7 +29,7 @@ function Sidebar() {
             >
               Aircraft
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
               to="/aircraftlist"
@@ -40,6 +40,18 @@ function Sidebar() {
               }
             >
               Aircraft List
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/aircraft/add"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full rounded bg-blue-600 p-2 text-white"
+                  : "block w-full rounded p-2 hover:bg-gray-200"
+              }
+            >
+              Add Aircraft
             </NavLink>
           </li>
 
