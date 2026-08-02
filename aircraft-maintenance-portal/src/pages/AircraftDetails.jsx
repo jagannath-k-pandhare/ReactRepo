@@ -18,9 +18,7 @@ function AircraftDetails() {
 
         const data = await response.json();
 
-        const selectedAircraft = data.find(
-          (item) => item.id === Number(id)
-        );
+        const selectedAircraft = data.find((item) => item.id === Number(id));
 
         setAircraft(selectedAircraft);
       } catch (error) {
@@ -36,7 +34,7 @@ function AircraftDetails() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto bg-white rounded-lg shadow p-6">
+    <div className="max-w-3xl mx-auto bg-white text-blue-600 rounded-lg shadow p-6">
       <h1 className="text-2xl font-bold mb-6">Aircraft Details</h1>
 
       <div className="space-y-4">
@@ -54,7 +52,7 @@ function AircraftDetails() {
       </div>
 
       <button
-        className="mt-8 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
+        className="mt-8 bg-gray-600 text-white px-4 py-2 rounded hover:bg-yellow-700"
         onClick={() => navigate("/aircraftlist")}
       >
         Back
