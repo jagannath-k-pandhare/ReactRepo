@@ -1,0 +1,10 @@
+async function getAircraft() {
+  const response = await fetch("/aircraft.json");
+  if (!response.ok) {
+    throw new Error(`HTTP Error : ${response.status}`);
+  }
+  const data = await response.json();
+  return data;
+}
+
+export { getAircraft };

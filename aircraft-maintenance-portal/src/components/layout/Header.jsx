@@ -9,6 +9,7 @@ function Header() {
     "/dashboard": "Dashboard",
     "/aircraft": "Aircraft",
     "/aircraft/add": "Add Aircraft",
+    "/aircraft/edit/3": "Edit Aircraft",
     "/aircraftlist": "Aircraft List",
     "/favourite": "Favourite",
     "/profile": "Profile",

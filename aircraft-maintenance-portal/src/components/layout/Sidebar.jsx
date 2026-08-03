@@ -17,19 +17,6 @@ function Sidebar() {
               Dashboard
             </NavLink>
           </li>
-
-          {/* <li>
-            <NavLink
-              to="/aircraft"
-              className={({ isActive }) =>
-                isActive
-                  ? "block w-full rounded bg-blue-600 p-2 text-white"
-                  : "block w-full rounded p-2 hover:bg-gray-200"
-              }
-            >
-              Aircraft
-            </NavLink>
-          </li> */}
           <li>
             <NavLink
               to="/aircraftlist"
@@ -51,10 +38,9 @@ function Sidebar() {
                   : "block w-full rounded p-2 hover:bg-gray-200"
               }
             >
-              Add Aircraft
+              Add/Edit Aircraft
             </NavLink>
           </li>
-
           <li>
             <NavLink
               to="/favourite"

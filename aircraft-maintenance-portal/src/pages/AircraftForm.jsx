@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function AircraftForm() {
   const { id } = useParams();
@@ -8,6 +9,7 @@ function AircraftForm() {
   const [model, setModel] = useState("");
   const [manufacturer, setManufacturer] = useState("");
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   function validateForm() {
     const validationErrors = {};
@@ -77,7 +79,9 @@ function AircraftForm() {
     console.log("Saved");
   }
 
-  function handleCancel(e) {}
+  function handleCancel(e) {
+    navigate("/aircraftlist");
+  }
 
   return (
     <div>
