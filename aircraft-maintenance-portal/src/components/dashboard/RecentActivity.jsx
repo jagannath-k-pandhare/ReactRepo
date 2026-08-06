@@ -8,7 +8,6 @@ function RecentActivity() {
     async function loadActivities() {
       try {
         const response = await fetch("/activity.json");
-        console.log(response);
         if (!response.ok) {
           throw new Error(`HTTP Error : ${response.status}`);
         }

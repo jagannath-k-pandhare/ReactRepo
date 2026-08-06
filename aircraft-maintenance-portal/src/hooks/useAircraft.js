@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { getAircraft } from "../services/aircraftService";
+import { getAircraft, getAircraftById } from "../services/aircraftService";
 
-function useAircraft() {
-  const [aircraft, setAircraft] = useState([]);
+function useAircraft(id) {
+  const [aircraft, setAircraft] = useState(id ? null : []);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -11,8 +11,10 @@ function useAircraft() {
       setLoading(true);
       setError(null);
 
-      const data = await getAircraft();
+      const data = id ? await getAircraftById(id) : await getAircraft();
+
       setAircraft(data);
+
       return data;
     } catch (err) {
       setError(err);
@@ -20,7 +22,7 @@ function useAircraft() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     loadAircraft();

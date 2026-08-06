@@ -1,23 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DataTable from "../components/common/DataTable";
 import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "../components/common/ConfirmDialog";
 import useAircraft from "../hooks/useAircraft";
 
 function AircraftList() {
-  const { aircraft: aircraftData, loading, error } = useAircraft();
+  const { aircraft } = useAircraft();
   const [searchAircraft, setSearchAircraft] = useState("");
   const [searchManuf, setSearchManuf] = useState("");
   const navigate = useNavigate();
   const [showDialog, setShowDialog] = useState(false);
   const [selectedAircraft, setSelectedAircraft] = useState(null);
-  const [aircraft, setAircraft] = useState([]);
-
-  useEffect(() => {
-    setAircraft(aircraftData);
-  }, [aircraftData]);
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error : {error.message}</div>;
 
   function handleView(item) {
     navigate(`/aircraftdetails/${item.id}`);
@@ -32,7 +25,7 @@ function AircraftList() {
     const updatedAircraftList = aircraft.filter(
       (item) => item.id !== selectedAircraft.id,
     );
-    setAircraft(updatedAircraftList);
+    //setAircraft(updatedAircraftList);
     setSelectedAircraft(null);
     setShowDialog(false);
   }

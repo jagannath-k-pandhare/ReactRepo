@@ -1,55 +1,33 @@
-import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import useAircraft from "../hooks/useAircraft";
 
 function AircraftDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { aircraft, loading, error } = useAircraft(id);
 
-  const [aircraft, setAircraft] = useState(null);
-
-  useEffect(() => {
-    async function loadAircraft() {
-      try {
-        const response = await fetch("/aircraft.json");
-
-        if (!response.ok) {
-          throw new Error(`HTTP Error: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        const selectedAircraft = data.find((item) => item.id === Number(id));
-
-        setAircraft(selectedAircraft);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    loadAircraft();
-  }, [id]);
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>{error.message}</p>;
 
   if (!aircraft) {
-    return <p className="p-6">Loading...</p>;
+    return <p>Aircraft not found.</p>;
   }
 
   return (
     <div className="max-w-3xl mx-auto text-blue-600 rounded-lg shadow p-6">
       <h1 className="text-2xl font-bold mb-6">Aircraft Details</h1>
 
-      <div className="space-y-4">
-        <p>
-          <strong>Registration:</strong> {aircraft.aircraftReg}
-        </p>
+      <p>
+        <strong>Registration:</strong> {aircraft.aircraftReg}
+      </p>
 
-        <p>
-          <strong>Model:</strong> {aircraft.model}
-        </p>
+      <p>
+        <strong>Model:</strong> {aircraft.model}
+      </p>
 
-        <p>
-          <strong>Manufacturer:</strong> {aircraft.manufacturer}
-        </p>
-      </div>
+      <p>
+        <strong>Manufacturer:</strong> {aircraft.manufacturer}
+      </p>
 
       <button
         className="mt-8 bg-gray-600 text-white px-4 py-2 rounded hover:bg-yellow-700"
