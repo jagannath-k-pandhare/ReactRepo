@@ -2,15 +2,22 @@ import { useState, useEffect } from "react";
 import DataTable from "../components/common/DataTable";
 import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "../components/common/ConfirmDialog";
-import { getAircraft } from "../services/aircraftService";
+import useAircraft from "../hooks/useAircraft";
 
 function AircraftList() {
+  const { aircraft: aircraftData, loading, error } = useAircraft();
   const [searchAircraft, setSearchAircraft] = useState("");
-  const [aircraft, setAircraft] = useState([]);
   const [searchManuf, setSearchManuf] = useState("");
   const navigate = useNavigate();
   const [showDialog, setShowDialog] = useState(false);
   const [selectedAircraft, setSelectedAircraft] = useState(null);
+  const [aircraft, setAircraft] = useState([]);
+
+  useEffect(() => {
+    setAircraft(aircraftData);
+  }, [aircraftData]);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error : {error.message}</div>;
 
   function handleView(item) {
     navigate(`/aircraftdetails/${item.id}`);
@@ -20,6 +27,7 @@ function AircraftList() {
     setSelectedAircraft(item);
     setShowDialog(true);
   }
+  //function to call on confirmation on dialog
   function confirmDelete() {
     const updatedAircraftList = aircraft.filter(
       (item) => item.id !== selectedAircraft.id,
@@ -68,23 +76,6 @@ function AircraftList() {
     setSearchManuf(e.target.value);
   };
 
-  useEffect(() => {
-    async function loadAircraft() {
-      try {
-        // const response = await fetch("/aircraft.json");
-        // if (!response.ok) {
-        //   throw new Error(`HTTP Error : ${response.status}`);
-        // }
-        // const data = await response.json();
-        const data = await getAircraft();
-        setAircraft(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    loadAircraft();
-  }, []);
-
   const filteredAircraft = aircraft.filter((n) => {
     return (
       (searchAircraft === "" ||
@@ -124,9 +115,7 @@ function AircraftList() {
         <ConfirmDialog
           title="Delete Aircraft"
           message={`Are you sure you want to delete ${selectedAircraft.aircraftReg}?`}
-          onConfirm={() => {
-            return <>{confirmDelete()}</>;
-          }}
+          onConfirm={confirmDelete}
           onCancel={() => setShowDialog(false)}
         />
       )}
